@@ -1,26 +1,28 @@
 # 3.5. Internal Interfaces (IOT-INT)
 
 ## Table of Contents
-* [Overview](#overview)
-* [Authorization (IOT-INT-AUTHZ)](#authorization-iot-int-authz)
-  * [Unauthorized Access to the Interface (IOT-INT-AUTHZ-001)](#unauthorized-access-to-the-interface-iot-int-authz-001)
-  * [Privilege Escalation (IOT-INT-AUTHZ-002)](#privilege-escalation-iot-int-authz-002)
-* [Information Gathering (IOT-INT-INFO)](#information-gathering-iot-int-info)
-  * [Disclosure of Implementation Details (IOT-INT-INFO-001)](#disclosure-of-implementation-details-iot-int-info-001)
-  * [Disclosure of Ecosystem Details (IOT-INT-INFO-002)](#disclosure-of-ecosystem-details-iot-int-info-002)
-  * [Disclosure of User Data (IOT-INT-INFO-003)](#disclosure-of-user-data-iot-int-info-003)
-* [Configuration and Patch Management (IOT-INT-CONF)](#configuration-and-patch-management-iot-int-conf)
-  * [Usage of Outdated Software (IOT-INT-CONF-001)](#usage-of-outdated-software-iot-int-conf-001)
-  * [Presence of Unnecessary Software and Functionalities (IOT-INT-CONF-002)](#presence-of-unnecessary-software-and-functionalities-iot-int-conf-002)
-* [Secrets (IOT-INT-SCRT)](#secrets-iot-int-scrt)
-  * [Access to Confidential Data (IOT-INT-SCRT-001)](#access-to-confidential-data-iot-int-scrt-001)
-* [Cryptography (IOT-INT-CRYPT)](#cryptography-iot-int-crypt)
-  * [Usage of Weak Cryptographic Algorithms (IOT-INT-CRYPT-001)](#usage-of-weak-cryptographic-algorithms-iot-int-crypt-001)
-* [Business Logic (IOT-INT-LOGIC)](#business-logic-iot-int-logic)
-  * [Circumvention of the Intended Business Logic (IOT-INT-LOGIC-001)](#circumvention-of-the-intended-business-logic-iot-int-logic-001)
-* [Input Validation (IOT-INT-INVAL)](#input-validation-iot-int-inval)
-  * [Insufficient Input Validation (IOT-INT-INVAL-001)](#insufficient-input-validation-iot-int-inval-001)
-  * [Code or Command Injection (IOT-INT-INVAL-002)](#code-or-command-injection-iot-int-inval-002)
+- [3.5. Internal Interfaces (IOT-INT)](#35-internal-interfaces-iot-int)
+	- [Table of Contents](#table-of-contents)
+	- [Overview](#overview)
+	- [Authorization (IOT-INT-AUTHZ)](#authorization-iot-int-authz)
+		- [Unauthorized Access to the Interface (IOT-INT-AUTHZ-001)](#unauthorized-access-to-the-interface-iot-int-authz-001)
+		- [Privilege Escalation (IOT-INT-AUTHZ-002)](#privilege-escalation-iot-int-authz-002)
+	- [Information Gathering (IOT-INT-INFO)](#information-gathering-iot-int-info)
+		- [Disclosure of Implementation Details (IOT-INT-INFO-001)](#disclosure-of-implementation-details-iot-int-info-001)
+		- [Disclosure of Ecosystem Details (IOT-INT-INFO-002)](#disclosure-of-ecosystem-details-iot-int-info-002)
+		- [Disclosure of User Data (IOT-INT-INFO-003)](#disclosure-of-user-data-iot-int-info-003)
+	- [Configuration and Patch Management (IOT-INT-CONF)](#configuration-and-patch-management-iot-int-conf)
+		- [Usage of Outdated Software (IOT-INT-CONF-001)](#usage-of-outdated-software-iot-int-conf-001)
+		- [Presence of Unnecessary Software and Functionalities (IOT-INT-CONF-002)](#presence-of-unnecessary-software-and-functionalities-iot-int-conf-002)
+	- [Secrets (IOT-INT-SCRT)](#secrets-iot-int-scrt)
+		- [Access to Confidential Data (IOT-INT-SCRT-001)](#access-to-confidential-data-iot-int-scrt-001)
+	- [Cryptography (IOT-INT-CRYPT)](#cryptography-iot-int-crypt)
+		- [Usage of Weak Cryptographic Algorithms (IOT-INT-CRYPT-001)](#usage-of-weak-cryptographic-algorithms-iot-int-crypt-001)
+	- [Business Logic (IOT-INT-LOGIC)](#business-logic-iot-int-logic)
+		- [Circumvention of the Intended Business Logic (IOT-INT-LOGIC-001)](#circumvention-of-the-intended-business-logic-iot-int-logic-001)
+	- [Input Validation (IOT-INT-INPV)](#input-validation-iot-int-inpv)
+		- [Insufficient Input Validation (IOT-INT-INPV-001)](#insufficient-input-validation-iot-int-inpv-001)
+		- [Code or Command Injection (IOT-INT-INPV-002)](#code-or-command-injection-iot-int-inpv-002)
 
 
 
@@ -59,12 +61,13 @@ Depending on the access model for a given device, only certain individuals might
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-1</i></tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-1</i></tr>
 </table>
+
 **Summary**
 
-Depending on the specific implementation of a given device, access to an internal interface might be restricted to individuals with a certain logical access level, e.g., *LA-2*, *LA-3* or *LA-4*. If the device fails to correctly verify access permissions, any attacker (*LA-1*) might be able to get access.
+Depending on the specific implementation of a given device, access to an internal interface might be restricted to individuals with a certain authorization access level, e.g., *AA-2*, *AA-3* or *AA-4*. If the device fails to correctly verify access permissions, any attacker (*AA-1*) might be able to get access.
 
 **Test Objectives**
 
@@ -97,12 +100,13 @@ This test case is based on: [IOT-DES-AUTHZ-001](../data_exchange_services/README
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-2</i> - <i>LA-3</i><br>(depending on the access model for the given device)</tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-2</i> - <i>AA-3</i><br>(depending on the access model for the given device)</tr>
 </table>
+
 **Summary**
 
-Depending on the specific implementation of a given device, access to some functionalities via an internal interface might be restricted to individuals with a certain logical access level, e.g., *LA-3* or *LA-4*. If the interface fails to correctly verify access permissions, an attacker with a lower logical access level than intended might be able to get access to the restricted functionalities.
+Depending on the specific implementation of a given device, access to some functionalities via an internal interface might be restricted to individuals with a certain authorization access level, e.g., *AA-3* or *AA-4*. If the interface fails to correctly verify access permissions, an attacker with a lower authorization access level than intended might be able to get access to the restricted functionalities.
 
 **Test Objectives**
 
@@ -110,7 +114,7 @@ Depending on the specific implementation of a given device, access to some funct
 
 **Remediation**
 
-Proper authorization checks need to be implemented, which ensure that access to restricted functionalities is only possible for individuals with the required logical access levels.
+Proper authorization checks need to be implemented, which ensure that access to restricted functionalities is only possible for individuals with the required authorization access levels.
 
 **References**
 
@@ -131,8 +135,8 @@ Internal interfaces might disclose various information, which could reveal detai
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-1</i> - <i>LA-4</i><br>(depending on the access model for the given device)</tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-1</i> - <i>AA-4</i><br>(depending on the access model for the given device)</tr>
 </table>
 
 **Summary**
@@ -176,8 +180,8 @@ This test case is based on: [IOT-FW-INFO-002](../firmware/README.md#disclosure-o
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-1</i> - <i>LA-4</i><br> depending on the access model for the given device)</tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-1</i> - <i>AA-4</i><br> depending on the access model for the given device)</tr>
 </table>
 
 **Summary**
@@ -215,8 +219,8 @@ This test case is based on: [IOT-FW-INFO-003](../firmware/README.md#disclosure-o
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-1</i> - <i>LA-4</i><br>(depending on the access model for the given device)</tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-1</i> - <i>AA-4</i><br>(depending on the access model for the given device)</tr>
 </table>
 
 **Summary**
@@ -258,8 +262,8 @@ Since IoT devices can have a long lifespan, it is important to make sure that t
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-1</i> - <i>LA-4</i><br>(depending on the access model for the given device)</tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-1</i> - <i>AA-4</i><br>(depending on the access model for the given device)</tr>
 </table>
 
 **Summary**
@@ -301,8 +305,8 @@ This test case is based on: [IOT-FW-CONF-001](../firmware/README.md#usage-of-out
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-1</i> - <i>LA-4</i><br>(depending on the access model for the given device)</tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-1</i> - <i>AA-4</i><br>(depending on the access model for the given device)</tr>
 </table>
 
 **Summary**
@@ -348,8 +352,8 @@ IoT devices are often operated outside of the control space of their manufactur
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-1</i> - <i>LA-4</i><br>(depending on the access model for the given device)</tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-1</i> - <i>AA-4</i><br>(depending on the access model for the given device)</tr>
 </table>
 
 **Summary**
@@ -391,8 +395,8 @@ Many IoT devices need to implement cryptographic algorithms, e.g., to securely 
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-1</i> - <i>LA-4</i><br>(depending on the access model for the given device)</tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-1</i> - <i>AA-4</i><br>(depending on the access model for the given device)</tr>
 </table>
 
 **Summary**
@@ -440,8 +444,8 @@ Even if all other aspects of the internal interface are securely implemented and
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-1</i> - <i>LA-4</i><br>(depending on the access model for the given device)</tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-1</i> - <i>AA-4</i><br>(depending on the access model for the given device)</tr>
 </table>
 
 **Summary**
@@ -470,11 +474,11 @@ This test case is based on: [IOT-DES-LOGIC-001](../data_exchange_services/README
 
 
 
-## Input Validation (IOT-INT-INVAL)
+## Input Validation (IOT-INT-INPV)
 
 In order to ensure that only valid and well-formed data enters the processing flows of a device, the input from a all untrustworthy sources, e.g., users or external systems, has to be verified and validated.
 
-### Insufficient Input Validation (IOT-INT-INVAL-001)
+### Insufficient Input Validation (IOT-INT-INPV-001)
 **Required Access Levels**
 
 <table width="100%">
@@ -483,8 +487,8 @@ In order to ensure that only valid and well-formed data enters the processing fl
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-1</i> - <i>LA-4</i><br>(depending on the access model for the given device)</tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-1</i> - <i>AA-4</i><br>(depending on the access model for the given device)</tr>
 </table>
 
 **Summary**
@@ -511,9 +515,9 @@ For this test case, data from the following sources was consolidated:
 * ["Practical IoT Hacking"][practical_iot_hacking] by Fotios Chantzis, Ioannis Stais, Paulino Calderon, Evangelos Deirmentzoglou, and Beau Woods
 * Key aspects of testing of the T-Systems Multimedia Solutions GmbH
 
-This test case is based on: [IOT-DES-INVAL-001](../data_exchange_services/README.md#insufficient-input-validation-iot-des-inval-001).
+This test case is based on: [IOT-DES-INPV-001](../data_exchange_services/README.md#insufficient-input-validation-iot-des-inpv-001).
 
-### Code or Command Injection (IOT-INT-INVAL-002)
+### Code or Command Injection (IOT-INT-INPV-002)
 **Required Access Levels**
 
 <table width="100%">
@@ -522,8 +526,8 @@ This test case is based on: [IOT-DES-INVAL-001](../data_exchange_services/README
  <td><i>PA-4</i></td>
 	</tr>
 	<tr valign="top">
-		<th align="left">Logical</th>
-		<td><i>LA-1</i> - <i>LA-4</i><br>(depending on the access model for the given device)</tr>
+		<th align="left">Authorization</th>
+		<td><i>AA-1</i> - <i>AA-4</i><br>(depending on the access model for the given device)</tr>
 </table>
 
 **Summary**
@@ -532,7 +536,7 @@ If no input validation is performed or only an insufficient input validation mec
 
 **Test Objectives**
 
-- Based on [IOT-INT-INVAL-001](#insufficient-input-validation-iot-int-inval-001), it must be checked whether it is possible to submit code or commands, which are then executed by the system.
+- Based on [IOT-INT-INPV-001](#insufficient-input-validation-iot-int-inpv-001), it must be checked whether it is possible to submit code or commands, which are then executed by the system.
 
 **Remediation**
 
@@ -548,7 +552,7 @@ For this test case, data from the following sources was consolidated:
 * ["Practical IoT Hacking"][practical_iot_hacking] by Fotios Chantzis, Ioannis Stais, Paulino Calderon, Evangelos Deirmentzoglou, and Beau Woods
 * Key aspects of testing of the T-Systems Multimedia Solutions GmbH
 
-This test case is based on: [IOT-DES-INVAL-002](../data_exchange_services/README.md#code-or-command-injection-iot-des-inval-002).
+This test case is based on: [IOT-DES-INPV-002](../data_exchange_services/README.md#code-or-command-injection-iot-des-inpv-002).
 
 
 
